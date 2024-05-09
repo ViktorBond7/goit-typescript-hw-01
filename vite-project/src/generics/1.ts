@@ -1,29 +1,11 @@
-import axios from "axios";
+// Типізуйте асинхронну функцію fetchData, яка приймає URL ресурсу та повертає об'єкт з даними.
+//  Використовуйте Generics для типізації повернутих даних.
 
-// async function fetchData(url: string) {
-//   try {
-//     const response: string = await axios.get(url);
-//     return response.data:;
-//   } catch (error) {
-//     throw new Error(`Error fetching from ${url}: ${error}`);
-//   }
-// }
-
-async function fetchData(url: string): Promise<string> {
+async function fetchData<T>(url: string): Promise<T> {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<T>(url);
     return response.data;
   } catch (error) {
     throw new Error(`Error fetching from ${url}: ${error}`);
   }
 }
-
-// const promise: Promise<string> = new Promise((resolve) => {
-//   setInterval(() => {
-//     resolve("Done!");
-//   }, 1000);
-// });
-
-// promise.then((data) => {
-//   console.log(data);
-// });
